@@ -54,10 +54,6 @@ export const metadata: Metadata = {
     description:
       "Soluções completas em gesso e drywall com equipe própria e garantia.",
   },
-  icons: {
-    icon: "/tiger-logo.jpeg",
-    apple: "/tiger-logo.jpeg",
-  },
 };
 
 export default function RootLayout({

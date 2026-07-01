@@ -10,11 +10,11 @@ function Logo() {
   return (
     <a href="#top" className="flex items-center gap-3 no-underline">
       <Image
-        src="/tiger-logo.jpeg"
+        src="/tiger-symbol.png"
         alt="Tiger Gesso"
-        width={46}
-        height={46}
-        className="h-[46px] w-[46px] rounded-[9px] border border-white/10 object-cover"
+        width={44}
+        height={44}
+        className="h-11 w-11 object-contain"
         priority
       />
       <span className="flex flex-col leading-none">

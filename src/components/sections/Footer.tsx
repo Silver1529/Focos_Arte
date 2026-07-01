@@ -23,11 +23,11 @@ export default function Footer() {
         <div>
           <div className="mb-4 flex items-center gap-3">
             <Image
-              src="/tiger-logo.jpeg"
+              src="/tiger-symbol.png"
               alt="Tiger Gesso"
               width={44}
               height={44}
-              className="h-11 w-11 rounded-[9px] border border-white/10 object-cover"
+              className="h-11 w-11 object-contain"
             />
             <span className="font-display text-[16px] font-extrabold tracking-[0.16em] text-fg-strong">
               TIGER GESSO

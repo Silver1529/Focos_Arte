@@ -20,8 +20,14 @@ const barlow = Barlow({
   display: "swap",
 });
 
+// Em produção na Vercel usa o domínio de produção automaticamente
+// (adapta sozinho quando o domínio próprio for configurado).
+const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
+  ? `https://${process.env.VERCEL_PROJECT_PRODUCTION_URL}`
+  : site.url;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(site.url),
+  metadataBase: new URL(siteUrl),
   title: {
     default: "Tiger Gesso — Soluções em Gesso & Drywall",
     template: "%s · Tiger Gesso",
@@ -43,7 +49,7 @@ export const metadata: Metadata = {
     title: "Tiger Gesso — Soluções em Gesso & Drywall",
     description:
       "Forros, sancas, divisórias e paredes 3D com equipe própria, acabamento impecável e garantia. Mais de 30 anos de mercado.",
-    url: site.url,
+    url: siteUrl,
     siteName: "Tiger Gesso",
     locale: "pt_BR",
     type: "website",

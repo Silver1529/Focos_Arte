@@ -6,8 +6,8 @@
  */
 
 export const site = {
-  /** Usado em metadata/OpenGraph. Ajustar no go-live para o domínio real. */
-  url: "https://tigergesso.com.br",
+  /** Fallback de URL para metadata/OpenGraph (usado quando fora da Vercel). */
+  url: "https://tigerhub-six.vercel.app",
 
   /** Anos de mercado — aparece no hero, sobre, footer. */
   years: 30,

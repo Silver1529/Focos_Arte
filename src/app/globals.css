@@ -1,26 +1,130 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ============================================================
+   Design tokens — identidade visual Tiger Gesso
+   ============================================================ */
+@theme {
+  /* superfícies */
+  --color-ink: #0b0d10;          /* fundo base */
+  --color-ink-deep: #0a0c0f;     /* footer / mais escuro */
+  --color-panel: #0e1115;        /* seções alternadas */
+  --color-surface: #15191f;      /* cards / badges */
+
+  /* texto */
+  --color-fg: #e8eaed;           /* texto padrão */
+  --color-fg-strong: #eef1f4;    /* títulos */
+  --color-muted: #a7adb6;        /* parágrafos */
+  --color-muted-2: #9097a0;      /* secundário */
+  --color-muted-3: #8a9099;      /* terciário */
+  --color-faint: #6f7681;        /* labels / legendas */
+
+  /* marca */
+  --color-wa: #25d366;           /* verde WhatsApp */
+  --color-wa-ink: #06210f;       /* texto sobre o verde */
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-display: var(--font-archivo), sans-serif;
+  --font-body: var(--font-barlow), system-ui, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* ============================================================
+   Base
+   ============================================================ */
+:root {
+  color-scheme: dark;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--color-ink);
+  color: var(--color-fg);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: #c9ced6;
+  color: #0b0d10;
+}
+
+/* ============================================================
+   Animações
+   ============================================================ */
+@keyframes tgFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-7px); }
+}
+
+@keyframes tgPulse {
+  0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55); }
+  70% { box-shadow: 0 0 0 16px rgba(37, 211, 102, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+}
+
+.tg-float {
+  animation: tgFloat 3s ease-in-out infinite, tgPulse 2.4s infinite;
+}
+
+/* ============================================================
+   Texto com gradiente metálico
+   ============================================================ */
+.tg-metal {
+  background: linear-gradient(95deg, #ffffff, #aeb6c2 35%, #f2f4f7 60%, #9aa1ac);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tg-metal-soft {
+  background: linear-gradient(95deg, #ffffff, #b6bdc8, #f2f4f7);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.tg-metal-vert {
+  background: linear-gradient(180deg, #dfe3e9, #5a616b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ============================================================
+   Reveal on scroll (ativado por src/components/Reveal.tsx)
+   ============================================================ */
+.tg-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition:
+    opacity 0.7s cubic-bezier(0.2, 0.7, 0.2, 1),
+    transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+
+.tg-reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .tg-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .tg-float {
+    animation: none;
+  }
 }

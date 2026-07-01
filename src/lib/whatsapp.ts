@@ -1,33 +1,18 @@
-import { site } from "./site";
-
-/** Número de WhatsApp em formato limpo (somente dígitos), com override por env. */
-export function waNumber(): string {
-  const raw = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? site.whatsappNumber;
-  return raw.replace(/\D/g, "");
-}
-
-/** Monta um link wa.me com a mensagem informada já codificada. */
-export function waLink(message: string): string {
-  return `https://wa.me/${waNumber()}?text=${encodeURIComponent(message)}`;
+/** Monta um link wa.me para um número específico com a mensagem já codificada. */
+export function waLinkFor(phone: string, message: string): string {
+  return `https://wa.me/${phone.replace(/\D/g, "")}?text=${encodeURIComponent(message)}`;
 }
 
 /** Mensagem padrão de orçamento (CTAs genéricos). */
 export const DEFAULT_WA_MESSAGE =
   "Olá, Tiger Gesso! Gostaria de solicitar um orçamento.";
 
-/** Link padrão de orçamento. */
-export function waDefaultLink(): string {
-  return waLink(DEFAULT_WA_MESSAGE);
+/** Mensagem para um serviço específico. */
+export function serviceMessage(serviceTitle: string): string {
+  return `Olá, Tiger Gesso! Tenho interesse em *${serviceTitle}*. Podem me passar um orçamento?`;
 }
 
-/** Link para um serviço específico. */
-export function waServiceLink(serviceTitle: string): string {
-  return waLink(
-    `Olá, Tiger Gesso! Tenho interesse em *${serviceTitle}*. Podem me passar um orçamento?`,
-  );
-}
-
-/** Monta a mensagem do formulário de contato. */
+/** Monta a mensagem do formulário de contato, anunciando o serviço escolhido. */
 export function waFormMessage(fields: {
   name: string;
   phone: string;
@@ -35,15 +20,14 @@ export function waFormMessage(fields: {
   message: string;
 }): string {
   const dash = (v: string) => (v.trim() ? v.trim() : "-");
-  return (
-    "Olá, Tiger Gesso! Gostaria de um orçamento." +
-    "\n\n*Nome:* " +
-    dash(fields.name) +
-    "\n*Telefone:* " +
-    dash(fields.phone) +
-    "\n*Serviço:* " +
-    dash(fields.service) +
-    "\n*Mensagem:* " +
-    dash(fields.message)
-  );
+  const lines = [
+    `Olá, Tiger Gesso! Gostaria de um orçamento de *${fields.service}*.`,
+    "",
+    `*Nome:* ${dash(fields.name)}`,
+    `*Telefone:* ${dash(fields.phone)}`,
+  ];
+  if (fields.message.trim()) {
+    lines.push("", `*Mensagem:* ${fields.message.trim()}`);
+  }
+  return lines.join("\n");
 }

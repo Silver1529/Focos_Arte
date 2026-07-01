@@ -1,5 +1,5 @@
-import { site } from "@/lib/site";
-import { waDefaultLink } from "@/lib/whatsapp";
+import { site, whatsapps } from "@/lib/site";
+import { DEFAULT_WA_MESSAGE, waLinkFor } from "@/lib/whatsapp";
 import Reveal from "../Reveal";
 import ContactForm from "../ContactForm";
 import { SectionEyebrow } from "../ui";
@@ -62,24 +62,35 @@ export default function Contact() {
           </p>
 
           <div className="flex flex-col gap-[18px]">
-            <a
-              href={waDefaultLink()}
-              target="_blank"
-              rel="noopener"
-              className="flex items-center gap-[14px] no-underline"
-            >
-              <InfoRow
-                icon={<WhatsAppIcon size={22} fill="#06210f" />}
-                iconBg="#25D366"
-                label="WhatsApp"
-                value={site.phoneDisplay}
-              />
-            </a>
-            <InfoRow
-              icon={<MailIcon size={20} />}
-              label="E-mail"
-              value={site.email}
-            />
+            {whatsapps.map((w) => (
+              <a
+                key={w.phone}
+                href={waLinkFor(w.phone, DEFAULT_WA_MESSAGE)}
+                target="_blank"
+                rel="noopener"
+                className="no-underline transition-opacity hover:opacity-80"
+              >
+                <InfoRow
+                  icon={<WhatsAppIcon size={22} fill="#06210f" />}
+                  iconBg="#25D366"
+                  label={`WhatsApp · ${w.name}`}
+                  value={w.display}
+                />
+              </a>
+            ))}
+            {whatsapps.map((w) => (
+              <a
+                key={`mail-${w.phone}`}
+                href={`mailto:${w.email}`}
+                className="no-underline transition-opacity hover:opacity-80"
+              >
+                <InfoRow
+                  icon={<MailIcon size={20} />}
+                  label={`E-mail · ${w.name}`}
+                  value={w.email}
+                />
+              </a>
+            ))}
             <InfoRow
               icon={<PinIcon size={20} />}
               label="Atendimento"

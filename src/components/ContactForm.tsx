@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { serviceOptions } from "@/lib/site";
-import { waFormMessage, waLink } from "@/lib/whatsapp";
+import { waFormMessage } from "@/lib/whatsapp";
+import { useWhatsApp } from "./whatsapp-ui";
 import { WhatsAppIcon } from "./icons";
 
 const fieldClass =
@@ -16,10 +17,13 @@ export default function ContactForm() {
   const [phone, setPhone] = useState("");
   const [service, setService] = useState<string>(serviceOptions[0]);
   const [message, setMessage] = useState("");
+  const { open } = useWhatsApp();
 
-  // v1 (sem banco): monta a mensagem e abre o WhatsApp.
+  // v1 (sem banco): monta a mensagem e abre o pop-up para escolher o contato.
   // Fase 2: enviar POST /api/leads ANTES de redirecionar (regra de ouro).
-  const href = waLink(waFormMessage({ name, phone, service, message }));
+  function enviar() {
+    open(waFormMessage({ name, phone, service, message }));
+  }
 
   return (
     <div
@@ -75,15 +79,14 @@ export default function ContactForm() {
         </label>
       </div>
 
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener"
-        className="mt-5 flex items-center justify-center gap-[10px] rounded-full bg-wa p-4 font-display text-[14.5px] font-extrabold uppercase tracking-[0.04em] text-wa-ink no-underline"
+      <button
+        type="button"
+        onClick={enviar}
+        className="mt-5 flex w-full cursor-pointer items-center justify-center gap-[10px] rounded-full border-0 bg-wa p-4 font-display text-[14.5px] font-extrabold uppercase tracking-[0.04em] text-wa-ink"
       >
         <WhatsAppIcon size={18} fill="#06210f" />
         Enviar pelo WhatsApp
-      </a>
+      </button>
       <p className="m-0 mt-[14px] text-center text-[12px] text-faint">
         Resposta rápida em horário comercial.
       </p>

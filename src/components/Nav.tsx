@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { navLinks } from "@/lib/site";
-import { waDefaultLink } from "@/lib/whatsapp";
+import { useWhatsApp } from "./whatsapp-ui";
 import { WhatsAppIcon } from "./icons";
 
 function Logo() {
@@ -31,6 +31,7 @@ function Logo() {
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const { open: openWa } = useWhatsApp();
 
   // Trava o scroll do body enquanto o menu mobile está aberto.
   useEffect(() => {
@@ -58,15 +59,14 @@ export default function Nav() {
             ))}
           </div>
 
-          <a
-            href={waDefaultLink()}
-            target="_blank"
-            rel="noopener"
-            className="hidden items-center gap-2 rounded-full bg-wa px-[18px] py-[11px] font-display text-[12.5px] font-bold uppercase tracking-[0.04em] text-wa-ink no-underline shadow-[0_6px_20px_rgba(37,211,102,0.28)] lg:inline-flex"
+          <button
+            type="button"
+            onClick={() => openWa()}
+            className="hidden cursor-pointer items-center gap-2 rounded-full border-0 bg-wa px-[18px] py-[11px] font-display text-[12.5px] font-bold uppercase tracking-[0.04em] text-wa-ink shadow-[0_6px_20px_rgba(37,211,102,0.28)] lg:inline-flex"
           >
             <WhatsAppIcon size={16} fill="#06210f" />
             Orçamento
-          </a>
+          </button>
 
           <button
             type="button"
@@ -107,16 +107,17 @@ export default function Nav() {
           </a>
         ))}
 
-        <a
-          href={waDefaultLink()}
-          target="_blank"
-          rel="noopener"
-          onClick={() => setOpen(false)}
-          className="mt-[26px] inline-flex items-center justify-center gap-[10px] rounded-full bg-wa p-4 font-display text-[15px] font-extrabold uppercase tracking-[0.04em] text-wa-ink no-underline"
+        <button
+          type="button"
+          onClick={() => {
+            setOpen(false);
+            openWa();
+          }}
+          className="mt-[26px] inline-flex cursor-pointer items-center justify-center gap-[10px] rounded-full border-0 bg-wa p-4 font-display text-[15px] font-extrabold uppercase tracking-[0.04em] text-wa-ink"
         >
           <WhatsAppIcon size={18} fill="#06210f" />
           Pedir orçamento
-        </a>
+        </button>
       </div>
     </>
   );

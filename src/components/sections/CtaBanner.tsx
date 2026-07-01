@@ -1,6 +1,5 @@
-import { waDefaultLink } from "@/lib/whatsapp";
 import Reveal from "../Reveal";
-import { WaButton } from "../ui";
+import { WaButton } from "../whatsapp-ui";
 
 export default function CtaBanner() {
   return (
@@ -19,7 +18,6 @@ export default function CtaBanner() {
           </p>
         </div>
         <WaButton
-          href={waDefaultLink()}
           iconSize={20}
           className="whitespace-nowrap px-[30px] py-[18px] text-[15px] shadow-[0_14px_34px_rgba(37,211,102,0.34)]"
         >

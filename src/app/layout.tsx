@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Archivo, Barlow } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/lib/site";
+import { WhatsAppProvider } from "@/components/whatsapp-ui";
 import "./globals.css";
 
 const archivo = Archivo({
@@ -64,7 +67,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={`${archivo.variable} ${barlow.variable}`}>
-      <body>{children}</body>
+      <body>
+        <WhatsAppProvider>{children}</WhatsAppProvider>
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }

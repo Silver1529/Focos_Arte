@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { site } from "@/lib/site";
-import { waDefaultLink } from "@/lib/whatsapp";
+import { developer, site, whatsapps } from "@/lib/site";
+import { DEFAULT_WA_MESSAGE, waLinkFor } from "@/lib/whatsapp";
 
 const footerNav = [
   { href: "#sobre", label: "Sobre" },
@@ -53,17 +53,28 @@ export default function Footer() {
         <div>
           <div className={colTitleClass}>Contato</div>
           <div className="flex flex-col gap-[11px]">
-            <span className="text-[14px] text-muted-3">{site.phoneDisplay}</span>
-            <span className="text-[14px] text-muted-3">{site.email}</span>
+            {whatsapps.map((w) => (
+              <a
+                key={w.phone}
+                href={waLinkFor(w.phone, DEFAULT_WA_MESSAGE)}
+                target="_blank"
+                rel="noopener"
+                className="text-[14px] text-muted-3 no-underline hover:text-fg"
+              >
+                <span className="font-semibold text-wa">WhatsApp</span> ·{" "}
+                {w.name} — {w.display}
+              </a>
+            ))}
+            {whatsapps.map((w) => (
+              <a
+                key={`mail-${w.phone}`}
+                href={`mailto:${w.email}`}
+                className="text-[14px] text-muted-3 no-underline hover:text-fg"
+              >
+                {w.email}
+              </a>
+            ))}
             <span className="text-[14px] text-muted-3">{site.city}</span>
-            <a
-              href={waDefaultLink()}
-              target="_blank"
-              rel="noopener"
-              className="mt-1 font-display text-[13px] font-bold tracking-[0.04em] text-wa no-underline"
-            >
-              WhatsApp →
-            </a>
           </div>
         </div>
       </div>
@@ -75,6 +86,27 @@ export default function Footer() {
         </span>
         <span className="text-[12.5px] text-faint">
           Mais de {site.years} anos de mercado
+        </span>
+      </div>
+
+      <div className="mx-auto mt-4 max-w-[1240px] text-center">
+        <span className="text-[12px] text-faint">
+          Desenvolvido por{" "}
+          <a
+            href={developer.url}
+            target="_blank"
+            rel="noopener"
+            className="font-semibold text-muted-2 no-underline hover:text-fg"
+          >
+            {developer.name}
+          </a>
+          {" · "}
+          <a
+            href={`mailto:${developer.email}`}
+            className="text-muted-3 no-underline hover:text-fg"
+          >
+            {developer.email}
+          </a>
         </span>
       </div>
     </footer>

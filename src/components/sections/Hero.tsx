@@ -1,8 +1,7 @@
 import Image from "next/image";
 import { site } from "@/lib/site";
-import { waDefaultLink } from "@/lib/whatsapp";
 import Reveal from "../Reveal";
-import { WaButton } from "../ui";
+import { WaButton } from "../whatsapp-ui";
 
 export default function Hero() {
   return (
@@ -51,10 +50,7 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-[14px]">
-            <WaButton
-              href={waDefaultLink()}
-              className="px-[26px] py-4 text-[14px] shadow-[0_12px_30px_rgba(37,211,102,0.32)]"
-            >
+            <WaButton className="px-[26px] py-4 text-[14px] shadow-[0_12px_30px_rgba(37,211,102,0.32)]">
               Pedir orçamento
             </WaButton>
             <a

@@ -1,7 +1,8 @@
 import { services } from "@/lib/site";
-import { waServiceLink } from "@/lib/whatsapp";
+import { serviceMessage } from "@/lib/whatsapp";
 import Reveal from "../Reveal";
 import { SectionEyebrow } from "../ui";
+import { WaLink } from "../whatsapp-ui";
 
 export default function Services() {
   return (
@@ -44,14 +45,12 @@ export default function Services() {
               <p className="m-0 mb-4 flex-1 text-[13.8px] leading-[1.55] text-muted-2">
                 {sv.desc}
               </p>
-              <a
-                href={waServiceLink(sv.title)}
-                target="_blank"
-                rel="noopener"
-                className="font-display text-[11.5px] font-bold uppercase tracking-[0.08em] text-wa no-underline"
+              <WaLink
+                message={serviceMessage(sv.title)}
+                className="font-display text-[11.5px] font-bold uppercase tracking-[0.08em] text-wa"
               >
                 Pedir orçamento →
-              </a>
+              </WaLink>
             </Reveal>
           ))}
         </div>

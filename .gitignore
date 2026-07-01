@@ -37,6 +37,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# asset de referência (panfleto), não faz parte do site
+/numeros.png
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts

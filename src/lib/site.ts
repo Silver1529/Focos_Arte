@@ -13,23 +13,38 @@ export const site = {
   years: 30,
 
   /** Cidade/região de atendimento. */
-  city: "sua cidade e região",
-
-  /** Telefone exibido (formatado para leitura). */
-  phoneDisplay: "(38) 99999-0000",
-
-  /** E-mail de contato. */
-  email: "contato@tigergesso.com.br",
-
-  /**
-   * WhatsApp (somente dígitos, DDI + DDD + número).
-   * Pode ser sobrescrito por NEXT_PUBLIC_WHATSAPP_NUMBER no ambiente.
-   */
-  whatsappNumber: "5538999990000",
+  city: "São Paulo e região",
 
   /** Horário de atendimento exibido no contato. */
   hours: "Seg a Sáb · 08h às 18h",
 } as const;
+
+/** Crédito do desenvolvedor (rodapé). */
+export const developer = {
+  name: "Miguel da Silva Bahia",
+  email: "miguelbahia0602@gmail.com",
+  url: "https://miguel-silva-tech.vercel.app/",
+} as const;
+
+export type WhatsAppContact = {
+  /** Nome de quem atende. */
+  name: string;
+  /** Número em formato internacional só com dígitos (DDI + DDD + número). */
+  phone: string;
+  /** Número formatado para exibição. */
+  display: string;
+  /** E-mail de contato da pessoa. */
+  email: string;
+};
+
+/**
+ * Contatos. Ao clicar em qualquer CTA de WhatsApp, o visitante escolhe
+ * com quem falar (ver src/components/whatsapp-ui.tsx).
+ */
+export const whatsapps: WhatsAppContact[] = [
+  { name: "Marcio", phone: "5511972537833", display: "(11) 97253-7833", email: "marciolimatg1@gmail.com" },
+  { name: "Mario Santos", phone: "5511957228008", display: "(11) 95722-8008", email: "mariosantos.tg@gmail.com" },
+];
 
 /** Estatísticas exibidas na faixa abaixo do hero. */
 export const stats = [
@@ -104,3 +119,43 @@ export const navLinks = [
   { href: "#projetos", label: "Projetos" },
   { href: "#contato", label: "Contato" },
 ] as const;
+
+export type ProjectPhoto = {
+  src: string;
+  alt: string;
+  /** Classes de span (lg+) para o mosaico. Vazio = tile 1x1. */
+  span?: string;
+};
+
+const mainProjectAddress =
+  "Av. Brig. Faria Lima, 3732 - Itaim Bibi, São Paulo - SP, 04538-132";
+
+/**
+ * Obra em destaque na seção Projetos.
+ * As fotos ficam em public/projetos/<slug>/.
+ */
+export const mainProject = {
+  title: "Prédio do Birman 32",
+  location: "Itaim Bibi, São Paulo · SP",
+  address: mainProjectAddress,
+  /** Abre a localização exata no Google Maps (sem chave de API). */
+  mapsUrl: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(mainProjectAddress)}`,
+  /** Mapa interativo embutido (sem chave de API). */
+  mapsEmbedUrl: `https://www.google.com/maps?q=${encodeURIComponent(mainProjectAddress)}&output=embed`,
+  summary:
+    "Forros e sancas curvas em drywall executados em um edifício comercial de alto padrão — do sistema estrutural ao acabamento.",
+  photos: [
+    { src: "/projetos/predio-do-birman-32/01.jpeg", alt: "Forro curvo em drywall no salão principal", span: "lg:col-span-2 lg:row-span-2" },
+    { src: "/projetos/predio-do-birman-32/07.jpeg", alt: "Amplo pavimento com forros orgânicos e vista da cidade", span: "lg:row-span-2" },
+    { src: "/projetos/predio-do-birman-32/03.jpeg", alt: "Sanca de drywall com curvas concêntricas" },
+    { src: "/projetos/predio-do-birman-32/02.jpeg", alt: "Detalhe da sanca curva com iluminação e difusor de ar" },
+    { src: "/projetos/predio-do-birman-32/10.jpeg", alt: "Forro curvo em drywall com vista panorâmica de São Paulo", span: "lg:col-span-2" },
+    { src: "/projetos/predio-do-birman-32/09.jpeg", alt: "Pavimento amplo com forros esculpidos em drywall", span: "lg:row-span-2" },
+    { src: "/projetos/predio-do-birman-32/08.jpeg", alt: "Salão com forro curvo e divisórias em drywall" },
+    { src: "/projetos/predio-do-birman-32/06.jpeg", alt: "Ambiente com estrutura de forro e divisórias curvas" },
+    { src: "/projetos/predio-do-birman-32/12.jpeg", alt: "Forros curvos em drywall vistos durante a execução", span: "lg:col-span-2" },
+    { src: "/projetos/predio-do-birman-32/05.jpeg", alt: "Divisórias e forro curvo com vista para a fachada envidraçada" },
+    { src: "/projetos/predio-do-birman-32/04.jpeg", alt: "Estrutura metálica do forro e instalações antes das placas" },
+    { src: "/projetos/predio-do-birman-32/11.jpeg", alt: "Pavimento com forros de drywall em fase de execução" },
+  ] satisfies ProjectPhoto[],
+} as const;

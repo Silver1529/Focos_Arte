@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Archivo, Barlow } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -60,6 +60,20 @@ export const metadata: Metadata = {
     description:
       "Soluções completas em gesso e drywall com equipe própria e garantia.",
   },
+  appleWebApp: {
+    capable: true,
+    title: "Tiger Gesso",
+    statusBarStyle: "black",
+  },
+  formatDetection: {
+    telephone: false,
+  },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#0b0d10",
+  width: "device-width",
+  initialScale: 1,
 };
 
 export default function RootLayout({

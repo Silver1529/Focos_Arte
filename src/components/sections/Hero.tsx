@@ -7,7 +7,7 @@ export default function Hero() {
   return (
     <header
       id="top"
-      className="relative flex min-h-screen items-center overflow-hidden px-[clamp(18px,5vw,64px)] pb-[60px] pt-[120px]"
+      className="relative flex min-h-svh items-center overflow-hidden px-[clamp(18px,5vw,64px)] pb-[60px] pt-[120px]"
       style={{
         background:
           "radial-gradient(120% 80% at 78% 18%,#1b2027 0%,#0e1115 45%,#0a0c0f 100%)",

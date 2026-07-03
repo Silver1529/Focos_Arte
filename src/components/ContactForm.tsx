@@ -7,7 +7,7 @@ import { useWhatsApp } from "./whatsapp-ui";
 import { WhatsAppIcon } from "./icons";
 
 const fieldClass =
-  "rounded-[10px] border border-white/[0.12] bg-[#0d1014] px-[14px] py-[13px] font-body text-[15px] text-fg-strong outline-none focus:border-white/30";
+  "rounded-[10px] border border-white/[0.12] bg-[#0d1014] px-[14px] py-[13px] font-body text-[16px] text-fg-strong outline-none focus:border-white/30";
 
 const labelTextClass =
   "font-display text-[11.5px] font-semibold uppercase tracking-[0.1em] text-muted-2";

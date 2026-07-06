@@ -135,7 +135,9 @@ const mainProjectAddress =
  * As fotos ficam em public/projetos/<slug>/.
  */
 export const mainProject = {
-  title: "Prédio do Birman 32",
+  title: "Entrega para a Shopee",
+  // location/address/mapsUrl/mapsEmbedUrl ficam GUARDADOS aqui para reativar
+  // o mapa depois (removidos da exibição a pedido — ver Projects.tsx).
   location: "Itaim Bibi, São Paulo · SP",
   address: mainProjectAddress,
   /** Abre a localização exata no Google Maps (sem chave de API). */

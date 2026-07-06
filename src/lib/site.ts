@@ -10,7 +10,7 @@ export const site = {
   url: "https://tigerhub-six.vercel.app",
 
   /** Anos de mercado — aparece no hero, sobre, footer. */
-  years: 30,
+  years: 7,
 
   /** Cidade/região de atendimento. */
   city: "São Paulo e região",
@@ -49,7 +49,7 @@ export const whatsapps: WhatsAppContact[] = [
 /** Estatísticas exibidas na faixa abaixo do hero. */
 export const stats = [
   { num: `${site.years}+`, label: "anos de mercado" },
-  { num: "2.500+", label: "obras entregues" },
+  { num: "67+", label: "obras entregues" },
   { num: "100%", label: "equipe própria" },
   { num: "5★", label: "avaliação dos clientes" },
 ] as const;

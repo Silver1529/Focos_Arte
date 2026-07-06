@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s · Tiger Gesso",
   },
   description:
-    "Forros, sancas, divisórias e paredes 3D executados por equipe própria, com acabamento impecável e garantia. Mais de 30 anos de mercado. Peça seu orçamento pelo WhatsApp.",
+    "Forros, sancas, divisórias e paredes 3D executados por equipe própria, com acabamento impecável e garantia. Mais de 7 anos de mercado. Peça seu orçamento pelo WhatsApp.",
   keywords: [
     "gesso",
     "drywall",
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Tiger Gesso — Soluções em Gesso & Drywall",
     description:
-      "Forros, sancas, divisórias e paredes 3D com equipe própria, acabamento impecável e garantia. Mais de 30 anos de mercado.",
+      "Forros, sancas, divisórias e paredes 3D com equipe própria, acabamento impecável e garantia. Mais de 7 anos de mercado.",
     url: siteUrl,
     siteName: "Tiger Gesso",
     locale: "pt_BR",

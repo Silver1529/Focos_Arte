@@ -42,7 +42,7 @@ export type WhatsAppContact = {
  * com quem falar (ver src/components/whatsapp-ui.tsx).
  */
 export const whatsapps: WhatsAppContact[] = [
-  { name: "Marcio", phone: "5511972537833", display: "(11) 97253-7833", email: "marciolimatg1@gmail.com" },
+  { name: "Marcio Lima", phone: "5511972537833", display: "(11) 97253-7833", email: "marciolimatg1@gmail.com" },
   { name: "Mario Santos", phone: "5511957228008", display: "(11) 95722-8008", email: "mariosantos.tg@gmail.com" },
 ];
 

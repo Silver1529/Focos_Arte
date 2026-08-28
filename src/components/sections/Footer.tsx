@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { developer, site, whatsapps } from "@/lib/site";
+import { developer, emailContacts, site, whatsapps } from "@/lib/site";
 import { DEFAULT_WA_MESSAGE, waLinkFor } from "@/lib/whatsapp";
 
 const footerNav = [
@@ -21,16 +21,16 @@ export default function Footer() {
     <footer className="border-t border-white/[0.07] bg-ink-deep px-[clamp(18px,5vw,64px)] pb-[30px] pt-[54px]">
       <div className="mx-auto grid max-w-[1240px] grid-cols-1 gap-10 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <div className="mb-4 flex items-center gap-3">
+          <div className="mb-4 flex flex-col items-start gap-[6px]">
             <Image
-              src="/tiger-symbol.png"
-              alt="Tiger Gesso"
-              width={44}
-              height={44}
-              className="h-11 w-11 object-contain"
+              src="/foco-arte-symbol.png"
+              alt="Foco Arte"
+              width={637}
+              height={190}
+              className="h-[30px] w-auto object-contain"
             />
             <span className="font-display text-[16px] font-extrabold tracking-[0.16em] text-fg-strong">
-              TIGER GESSO
+              FOCO ARTE
             </span>
           </div>
           <p className="m-0 max-w-[340px] text-[14px] leading-[1.6] text-muted-3">
@@ -65,7 +65,7 @@ export default function Footer() {
                 {w.name} — {w.display}
               </a>
             ))}
-            {whatsapps.map((w) => (
+            {emailContacts.map((w) => (
               <a
                 key={`mail-${w.phone}`}
                 href={`mailto:${w.email}`}
@@ -74,6 +74,10 @@ export default function Footer() {
                 {w.email}
               </a>
             ))}
+            <span className="text-[14px] text-muted-3">
+              <span className="font-semibold text-fg">Instagram</span> ·{" "}
+              {site.instagram.handle}
+            </span>
             <span className="text-[14px] text-muted-3">{site.city}</span>
           </div>
         </div>
@@ -81,8 +85,8 @@ export default function Footer() {
 
       <div className="mx-auto mt-[38px] flex max-w-[1240px] flex-wrap justify-between gap-3 border-t border-white/[0.07] pt-[22px]">
         <span className="text-[12.5px] text-faint">
-          © {yearNow} Tiger Gesso · Soluções em Gesso. Todos os direitos
-          reservados.
+          © {yearNow} Foco Arte · Drywall, Forros e Divisórias. Todos os
+          direitos reservados.
         </span>
         <span className="text-[12.5px] text-faint">
           Mais de {site.years} anos de mercado

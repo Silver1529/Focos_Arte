@@ -39,7 +39,7 @@ export default function About() {
           <p className="m-0 mb-[18px] text-[16.5px] leading-[1.7] text-muted">
             Há mais de{" "}
             <strong className="text-fg">{site.years} anos</strong> a{" "}
-            <strong className="text-fg">Tiger Gesso</strong> entrega soluções
+            <strong className="text-fg">Foco Arte</strong> entrega soluções
             completas em gesso e drywall para residências, comércios e obras de
             grande porte. São milhares de ambientes finalizados com o mesmo
             compromisso: qualidade, pontualidade e acabamento impecável.

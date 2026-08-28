@@ -1,4 +1,4 @@
-# CLAUDE.md — Briefing do Projeto TigerHub
+# CLAUDE.md — Briefing do Projeto Foco Arte
 
 > **Leia este arquivo por completo antes de qualquer ação.**
 > Este é o documento de contexto do projeto. Ao ser chamado neste repositório, você (Claude) já deve entender o que é o projeto, qual stack usar e o que fazer em cada fase — sem precisar de re-explicação.
@@ -7,16 +7,18 @@
 
 ## O que é este projeto
 
-**TigerHub** — plataforma digital da **Tiger Gesso** (empresa de gesso & drywall).
+**Foco Arte** — plataforma digital da **Foco Arte** (construtora de drywall, forros e divisórias).
 Migração de um site institucional estático (HTML) para uma aplicação **fullstack Next.js**: site público + captação de leads + painel admin, tudo no **mesmo repositório e mesmo deploy**.
 
-Identidade visual a preservar: tema dark (`#0b0d10`), fontes **Archivo** (títulos, uppercase, tracking largo) e **Barlow** (texto), verde WhatsApp `#25D366` nos CTAs.
+Identidade visual a preservar: tema dark (`#0b0d10`), logotipo prateado (telhado + "Foco Arte"), fontes **Archivo** (títulos, uppercase, tracking largo) e **Barlow** (texto), verde WhatsApp `#25D366` nos CTAs.
+
+> A arte-mestre da marca está em `logo-foco-arte-original.jpeg`; os assets derivados dela são `public/foco-arte-logo.png`, `public/foco-arte-symbol.png`, `src/app/icon.png`, `src/app/apple-icon.png` e `src/app/opengraph-image.png`. O projeto nasceu como "TigerHub / Tiger Gesso" e foi renomeado para Foco Arte — repo antigo (`Silver1529/tigerhub`) descontinuado.
 
 ## Ambiente do desenvolvedor
 
 - **Windows** com **Git Bash (MINGW64)** — use comandos compatíveis com bash no Windows.
 - Diretório de trabalho dos repositórios: `/c/Repository`
-- O projeto deve viver em: `/c/Repository/tigerhub`
+- O projeto deve viver em: `/c/Repository/foco-arte`
 
 ## Stack (não mudar sem alinhar antes)
 
@@ -36,7 +38,7 @@ Identidade visual a preservar: tema dark (`#0b0d10`), fontes **Archivo** (títul
 ```bash
 # 1. Criar a pasta do projeto
 cd /c/Repository
-mkdir tigerhub && cd tigerhub
+mkdir foco-arte && cd foco-arte
 
 # 2. Habilitar Corepack e ativar Yarn 4
 corepack enable
@@ -58,7 +60,7 @@ yarn add -D prisma
 yarn prisma init
 
 # 7. Git
-git init && git add -A && git commit -m "chore: setup inicial TigerHub (Next.js + Yarn 4)"
+git init && git add -A && git commit -m "chore: setup inicial Foco Arte (Next.js + Yarn 4)"
 ```
 
 > **Atenção (Windows/Git Bash):** se `corepack` não for reconhecido, verificar versão do Node (`node -v`, precisa ser ≥ 16.10; ideal 20+). Se `yarn create next-app` conflitar com arquivos do `yarn init -2`, preferir rodar o `create next-app` primeiro em pasta vazia e ativar o Yarn 4 em seguida.
@@ -66,7 +68,7 @@ git init && git add -A && git commit -m "chore: setup inicial TigerHub (Next.js 
 ## Estrutura alvo
 
 ```
-tigerhub/
+foco-arte/
 ├── src/
 │   ├── app/
 │   │   ├── (site)/        # páginas públicas (home, /projetos, /servicos/[slug])

@@ -5,11 +5,11 @@ export function waLinkFor(phone: string, message: string): string {
 
 /** Mensagem padrão de orçamento (CTAs genéricos). */
 export const DEFAULT_WA_MESSAGE =
-  "Olá, Tiger Gesso! Gostaria de solicitar um orçamento.";
+  "Olá, Foco Arte! Gostaria de solicitar um orçamento.";
 
 /** Mensagem para um serviço específico. */
 export function serviceMessage(serviceTitle: string): string {
-  return `Olá, Tiger Gesso! Tenho interesse em *${serviceTitle}*. Podem me passar um orçamento?`;
+  return `Olá, Foco Arte! Tenho interesse em *${serviceTitle}*. Podem me passar um orçamento?`;
 }
 
 /** Monta a mensagem do formulário de contato, anunciando o serviço escolhido. */
@@ -21,7 +21,7 @@ export function waFormMessage(fields: {
 }): string {
   const dash = (v: string) => (v.trim() ? v.trim() : "-");
   const lines = [
-    `Olá, Tiger Gesso! Gostaria de um orçamento de *${fields.service}*.`,
+    `Olá, Foco Arte! Gostaria de um orçamento de *${fields.service}*.`,
     "",
     `*Nome:* ${dash(fields.name)}`,
     `*Telefone:* ${dash(fields.phone)}`,

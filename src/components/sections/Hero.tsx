@@ -80,11 +80,11 @@ export default function Hero() {
             }}
           >
             <Image
-              src="/tiger-logo-textured.jpeg"
-              alt="Tiger Gesso"
-              width={640}
-              height={640}
-              className="block w-full rounded-[12px]"
+              src="/foco-arte-logo.png"
+              alt="Foco Arte — Drywall, Forros e Divisórias"
+              width={1039}
+              height={576}
+              className="block w-full"
               priority
             />
           </div>

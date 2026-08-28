@@ -8,21 +8,24 @@ import { WhatsAppIcon } from "./icons";
 
 function Logo() {
   return (
-    <a href="#top" className="flex items-center gap-3 no-underline">
+    <a
+      href="#top"
+      className="flex flex-col items-center gap-[5px] no-underline"
+    >
       <Image
-        src="/tiger-symbol.png"
-        alt="Tiger Gesso"
-        width={44}
-        height={44}
-        className="h-11 w-11 object-contain"
+        src="/foco-arte-symbol.png"
+        alt="Foco Arte"
+        width={637}
+        height={190}
+        className="h-[26px] w-auto object-contain"
         priority
       />
-      <span className="flex flex-col leading-none">
+      <span className="flex flex-col items-center leading-none">
         <span className="font-display text-[16px] font-extrabold tracking-[0.18em] text-fg-strong">
-          TIGER GESSO
+          FOCO ARTE
         </span>
-        <span className="mt-[3px] font-display text-[8.5px] font-medium tracking-[0.34em] text-muted-3">
-          SOLUÇÕES EM GESSO
+        <span className="mt-[3px] font-display text-[8.5px] font-medium tracking-[0.2em] text-muted-3">
+          DRYWALL · FORROS · DIVISÓRIAS
         </span>
       </span>
     </a>

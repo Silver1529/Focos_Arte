@@ -2436,6 +2436,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"foco-arte@workspace:.":
+  version: 0.0.0-use.local
+  resolution: "foco-arte@workspace:."
+  dependencies:
+    "@tailwindcss/postcss": "npm:^4"
+    "@types/node": "npm:^20"
+    "@types/react": "npm:^19"
+    "@types/react-dom": "npm:^19"
+    "@vercel/analytics": "npm:^2.0.1"
+    "@vercel/speed-insights": "npm:^2.0.0"
+    eslint: "npm:^9"
+    eslint-config-next: "npm:16.2.10"
+    next: "npm:16.2.10"
+    react: "npm:19.2.4"
+    react-dom: "npm:19.2.4"
+    tailwindcss: "npm:^4"
+    typescript: "npm:^5"
+    zod: "npm:^4.4.3"
+  languageName: unknown
+  linkType: soft
+
 "for-each@npm:^0.3.3, for-each@npm:^0.3.5":
   version: 0.3.5
   resolution: "for-each@npm:0.3.5"
@@ -4202,27 +4223,6 @@ __metadata:
   checksum: 10c0/47992e861053f861154e92fb4a98ac4ab47b6463717e60792dd1e8c755da0c4964cd8bb68c308a9066d6da89000b6310457b4d5d985c30de4ccc29066068cc17
   languageName: node
   linkType: hard
-
-"tigerhub@workspace:.":
-  version: 0.0.0-use.local
-  resolution: "tigerhub@workspace:."
-  dependencies:
-    "@tailwindcss/postcss": "npm:^4"
-    "@types/node": "npm:^20"
-    "@types/react": "npm:^19"
-    "@types/react-dom": "npm:^19"
-    "@vercel/analytics": "npm:^2.0.1"
-    "@vercel/speed-insights": "npm:^2.0.0"
-    eslint: "npm:^9"
-    eslint-config-next: "npm:16.2.10"
-    next: "npm:16.2.10"
-    react: "npm:19.2.4"
-    react-dom: "npm:19.2.4"
-    tailwindcss: "npm:^4"
-    typescript: "npm:^5"
-    zod: "npm:^4.4.3"
-  languageName: unknown
-  linkType: soft
 
 "tinyglobby@npm:^0.2.13, tinyglobby@npm:^0.2.15":
   version: 0.2.17

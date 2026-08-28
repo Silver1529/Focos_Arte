@@ -1,5 +1,5 @@
 /**
- * Configuração e conteúdo do site Tiger Gesso.
+ * Configuração e conteúdo do site Foco Arte.
  *
  * Enquanto não há banco de dados (v1), todo o conteúdo editável vive aqui.
  * Depois, parte disto migra para o painel admin / SiteConfig.
@@ -7,7 +7,7 @@
 
 export const site = {
   /** Fallback de URL para metadata/OpenGraph (usado quando fora da Vercel). */
-  url: "https://tigerhub-six.vercel.app",
+  url: "https://foco-arte.vercel.app",
 
   /** Anos de mercado — aparece no hero, sobre, footer. */
   years: 7,
@@ -17,6 +17,16 @@ export const site = {
 
   /** Horário de atendimento exibido no contato. */
   hours: "Seg a Sáb · 08h às 18h",
+
+  /**
+   * Instagram da empresa — exibido só como texto.
+   * O link foi retirado a pedido: a URL do perfil levava para outra conta.
+   * Para voltar a ser clicável, confirme a URL certa, adicione `url` aqui e
+   * envolva o item de novo num <a> em Contact.tsx e Footer.tsx.
+   */
+  instagram: {
+    handle: "@Foco_art",
+  },
 } as const;
 
 /** Crédito do desenvolvedor (rodapé). */
@@ -33,8 +43,8 @@ export type WhatsAppContact = {
   phone: string;
   /** Número formatado para exibição. */
   display: string;
-  /** E-mail de contato da pessoa. */
-  email: string;
+  /** E-mail de contato — opcional (a linha principal da empresa não tem). */
+  email?: string;
 };
 
 /**
@@ -42,9 +52,15 @@ export type WhatsAppContact = {
  * com quem falar (ver src/components/whatsapp-ui.tsx).
  */
 export const whatsapps: WhatsAppContact[] = [
+  { name: "Foco Arte", phone: "5511957334379", display: "(11) 95733-4379" },
   { name: "Marcio Lima", phone: "5511972537833", display: "(11) 97253-7833", email: "marciolimatg1@gmail.com" },
   { name: "Mario Santos", phone: "5511957228008", display: "(11) 95722-8008", email: "mariosantos.tg@gmail.com" },
 ];
+
+/** Contatos que têm e-mail (a linha principal da empresa só tem WhatsApp). */
+export const emailContacts = whatsapps.filter(
+  (w): w is WhatsAppContact & { email: string } => Boolean(w.email),
+);
 
 /** Estatísticas exibidas na faixa abaixo do hero. */
 export const stats = [
@@ -97,7 +113,7 @@ export const steps = [
 export const testimonials = [
   { quote: "Forro e sancas ficaram impecáveis. Equipe pontual, limpa e muito caprichosa. Recomendo demais!", name: "Marcos Andrade", role: "Residencial · Casa nova", initial: "M" },
   { quote: "Fizeram todo o drywall da minha loja em tempo recorde, sem atrapalhar o funcionamento. Profissionais de verdade.", name: "Patrícia Lemos", role: "Comercial · Loja", initial: "P" },
-  { quote: "Tradição que se vê no acabamento. Já é a terceira obra que fecho com a Tiger e nunca me decepcionaram.", name: "Eng. Rafael Costa", role: "Construtora · Parceiro", initial: "R" },
+  { quote: "Tradição que se vê no acabamento. Já é a terceira obra que fecho com a Foco Arte e nunca me decepcionaram.", name: "Eng. Rafael Costa", role: "Construtora · Parceiro", initial: "R" },
 ] as const;
 
 /** Opções do <select> de serviço no formulário de contato. */

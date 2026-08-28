@@ -1,9 +1,15 @@
-import { site, whatsapps } from "@/lib/site";
+import { emailContacts, site, whatsapps } from "@/lib/site";
 import { DEFAULT_WA_MESSAGE, waLinkFor } from "@/lib/whatsapp";
 import Reveal from "../Reveal";
 import ContactForm from "../ContactForm";
 import { SectionEyebrow } from "../ui";
-import { WhatsAppIcon, MailIcon, PinIcon, ClockIcon } from "../icons";
+import {
+  WhatsAppIcon,
+  MailIcon,
+  InstagramIcon,
+  PinIcon,
+  ClockIcon,
+} from "../icons";
 
 function InfoRow({
   icon,
@@ -78,7 +84,7 @@ export default function Contact() {
                 />
               </a>
             ))}
-            {whatsapps.map((w) => (
+            {emailContacts.map((w) => (
               <a
                 key={`mail-${w.phone}`}
                 href={`mailto:${w.email}`}
@@ -91,6 +97,11 @@ export default function Contact() {
                 />
               </a>
             ))}
+            <InfoRow
+              icon={<InstagramIcon size={20} />}
+              label="Instagram"
+              value={site.instagram.handle}
+            />
             <InfoRow
               icon={<PinIcon size={20} />}
               label="Atendimento"

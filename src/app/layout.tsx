@@ -29,8 +29,8 @@ const siteUrl = process.env.VERCEL_PROJECT_PRODUCTION_URL
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Tiger Gesso — Soluções em Gesso & Drywall",
-    template: "%s · Tiger Gesso",
+    default: "Foco Arte — Drywall, Forros e Divisórias",
+    template: "%s · Foco Arte",
   },
   description:
     "Forros, sancas, divisórias e paredes 3D executados por equipe própria, com acabamento impecável e garantia. Mais de 7 anos de mercado. Peça seu orçamento pelo WhatsApp.",
@@ -43,26 +43,27 @@ export const metadata: Metadata = {
     "paredes 3D",
     "molduras",
     "rodateto",
-    "Tiger Gesso",
+    "construtora",
+    "Foco Arte",
   ],
   openGraph: {
-    title: "Tiger Gesso — Soluções em Gesso & Drywall",
+    title: "Foco Arte — Drywall, Forros e Divisórias",
     description:
       "Forros, sancas, divisórias e paredes 3D com equipe própria, acabamento impecável e garantia. Mais de 7 anos de mercado.",
     url: siteUrl,
-    siteName: "Tiger Gesso",
+    siteName: "Foco Arte",
     locale: "pt_BR",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Tiger Gesso — Soluções em Gesso & Drywall",
+    title: "Foco Arte — Drywall, Forros e Divisórias",
     description:
       "Soluções completas em gesso e drywall com equipe própria e garantia.",
   },
   appleWebApp: {
     capable: true,
-    title: "Tiger Gesso",
+    title: "Foco Arte",
     statusBarStyle: "black",
   },
   formatDetection: {

@@ -31,7 +31,7 @@ export default function Hero() {
           <div className="mb-[26px] inline-flex items-center gap-[9px] rounded-full border border-white/[0.14] bg-white/[0.03] px-[15px] py-[7px]">
             <span className="h-[7px] w-[7px] rounded-full bg-wa shadow-[0_0_8px_#25D366]" />
             <span className="font-display text-[11px] font-semibold tracking-[0.22em] text-[#aeb4bd]">
-              MAIS DE {site.years} ANOS DE MERCADO
+              DESDE {site.foundedYear} · {site.years} ANOS DE MERCADO
             </span>
           </div>
 

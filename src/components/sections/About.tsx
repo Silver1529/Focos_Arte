@@ -37,9 +37,10 @@ export default function About() {
             Tradição e precisão em cada detalhe
           </h2>
           <p className="m-0 mb-[18px] text-[16.5px] leading-[1.7] text-muted">
-            Há mais de{" "}
-            <strong className="text-fg">{site.years} anos</strong> a{" "}
-            <strong className="text-fg">Foco Arte</strong> entrega soluções
+            Fundada em{" "}
+            <strong className="text-fg">{site.foundedYear}</strong>, a{" "}
+            <strong className="text-fg">Foco Arte</strong> entrega há mais de{" "}
+            <strong className="text-fg">{site.years} anos</strong> soluções
             completas em gesso e drywall para residências, comércios e obras de
             grande porte. São milhares de ambientes finalizados com o mesmo
             compromisso: qualidade, pontualidade e acabamento impecável.

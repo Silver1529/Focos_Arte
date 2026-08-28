@@ -5,12 +5,21 @@
  * Depois, parte disto migra para o painel admin / SiteConfig.
  */
 
+/** Ano de fundação da Foco Arte — base do cálculo de anos de mercado. */
+const FOUNDED_YEAR = 2014;
+
 export const site = {
   /** Fallback de URL para metadata/OpenGraph (usado quando fora da Vercel). */
   url: "https://foco-arte.vercel.app",
 
-  /** Anos de mercado — aparece no hero, sobre, footer. */
-  years: 7,
+  /** Ano de fundação — exibido como "desde 2014". */
+  foundedYear: FOUNDED_YEAR,
+
+  /**
+   * Anos de mercado — calculado a partir de FOUNDED_YEAR, para nunca ficar
+   * desatualizado. Aparece no hero, sobre, footer e nos metadados.
+   */
+  years: new Date().getFullYear() - FOUNDED_YEAR,
 
   /** Cidade/região de atendimento. */
   city: "São Paulo e região",
@@ -34,6 +43,13 @@ export const developer = {
   name: "Miguel da Silva Bahia",
   email: "miguelbahia0602@gmail.com",
   url: "https://miguel-silva-tech.vercel.app/",
+  /**
+   * Aviso de propriedade intelectual exibido no rodapé. Cobre o que foi
+   * criado pelo desenvolvedor (código, layout e design); a marca, as fotos
+   * e os textos continuam sendo da Foco Arte.
+   */
+  rights:
+    "Todos os direitos intelectuais sobre o código, o layout e o design deste site pertencem a Miguel da Silva Bahia.",
 } as const;
 
 export type WhatsAppContact = {
@@ -43,7 +59,7 @@ export type WhatsAppContact = {
   phone: string;
   /** Número formatado para exibição. */
   display: string;
-  /** E-mail de contato — opcional (a linha principal da empresa não tem). */
+  /** E-mail de contato — opcional (nem todo contato tem). */
   email?: string;
 };
 
@@ -52,12 +68,12 @@ export type WhatsAppContact = {
  * com quem falar (ver src/components/whatsapp-ui.tsx).
  */
 export const whatsapps: WhatsAppContact[] = [
-  { name: "Foco Arte", phone: "5511957334379", display: "(11) 95733-4379" },
   { name: "Marcio Lima", phone: "5511972537833", display: "(11) 97253-7833", email: "marciolimatg1@gmail.com" },
   { name: "Mario Santos", phone: "5511957228008", display: "(11) 95722-8008", email: "mariosantos.tg@gmail.com" },
+  { name: "Joilson Alves Silva", phone: "5511957334379", display: "(11) 95733-4379" },
 ];
 
-/** Contatos que têm e-mail (a linha principal da empresa só tem WhatsApp). */
+/** Contatos que têm e-mail (o do Joilson é só WhatsApp). */
 export const emailContacts = whatsapps.filter(
   (w): w is WhatsAppContact & { email: string } => Boolean(w.email),
 );

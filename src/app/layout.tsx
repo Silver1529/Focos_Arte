@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     template: "%s · Foco Arte",
   },
   description:
-    "Forros, sancas, divisórias e paredes 3D executados por equipe própria, com acabamento impecável e garantia. Mais de 7 anos de mercado. Peça seu orçamento pelo WhatsApp.",
+    `Forros, sancas, divisórias e paredes 3D executados por equipe própria, com acabamento impecável e garantia. No mercado desde ${site.foundedYear}, com mais de ${site.years} anos de experiência. Peça seu orçamento pelo WhatsApp.`,
   keywords: [
     "gesso",
     "drywall",
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Foco Arte — Drywall, Forros e Divisórias",
     description:
-      "Forros, sancas, divisórias e paredes 3D com equipe própria, acabamento impecável e garantia. Mais de 7 anos de mercado.",
+      `Forros, sancas, divisórias e paredes 3D com equipe própria, acabamento impecável e garantia. No mercado desde ${site.foundedYear}, com mais de ${site.years} anos de experiência.`,
     url: siteUrl,
     siteName: "Foco Arte",
     locale: "pt_BR",

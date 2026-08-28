@@ -34,8 +34,9 @@ export default function Footer() {
             </span>
           </div>
           <p className="m-0 max-w-[340px] text-[14px] leading-[1.6] text-muted-3">
-            Soluções completas em gesso e drywall há mais de {site.years} anos.
-            Qualidade, tradição e acabamento que você pode confiar.
+            Soluções completas em gesso e drywall desde {site.foundedYear} —
+            mais de {site.years} anos de qualidade, tradição e acabamento que
+            você pode confiar.
           </p>
         </div>
 
@@ -89,7 +90,7 @@ export default function Footer() {
           direitos reservados.
         </span>
         <span className="text-[12.5px] text-faint">
-          Mais de {site.years} anos de mercado
+          Desde {site.foundedYear} · mais de {site.years} anos de mercado
         </span>
       </div>
 
@@ -112,6 +113,9 @@ export default function Footer() {
             {developer.email}
           </a>
         </span>
+        <p className="m-0 mt-[6px] text-[11.5px] leading-[1.5] text-faint">
+          {developer.rights}
+        </p>
       </div>
     </footer>
   );

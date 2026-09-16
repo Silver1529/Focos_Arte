@@ -3,6 +3,7 @@ import { Archivo, Barlow } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/lib/site";
+import IntroAnimation from "@/components/IntroAnimation";
 import { WhatsAppProvider } from "@/components/whatsapp-ui";
 import "./globals.css";
 
@@ -85,6 +86,7 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${archivo.variable} ${barlow.variable}`}>
       <body>
+        <IntroAnimation />
         <WhatsAppProvider>{children}</WhatsAppProvider>
         <Analytics />
         <SpeedInsights />

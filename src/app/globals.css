@@ -131,3 +131,302 @@ body {
     animation: none;
   }
 }
+
+/* ============================================================
+   Animação de entrada (src/components/IntroAnimation.tsx)
+
+   Linha do tempo (2.4s no total):
+     0.08s  as duas placas do telhado entram girando no espaço 3D
+     0.70s  os quatro quadrados do símbolo se encaixam
+     1.02s  as placas dão lugar ao símbolo real da marca
+     1.15s  o letreiro FOCO ARTE sobe e fecha o espaçamento
+     1.45s  brilho metálico atravessa o logo
+     1.95s  a cortina abre em duas metades e revela o site
+
+   Sem biblioteca 3D: tudo é perspective + transform, que o
+   navegador compõe na GPU. Se o JS não rodar, a própria intro
+   se apaga sozinha no fim (introSelfDismiss).
+   ============================================================ */
+html.intro-locked,
+html.intro-locked body {
+  overflow: hidden;
+}
+
+.intro {
+  --intro-bg: radial-gradient(
+    120% 90% at 50% 40%,
+    #161b22 0%,
+    #0b0d10 55%,
+    #08090c 100%
+  );
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: grid;
+  place-items: center;
+  perspective: 1100px;
+  animation: introSelfDismiss 0s linear 2.4s forwards;
+}
+
+/* as duas metades que abrem no final — juntas desenham o mesmo
+   gradiente, por isso o background-size de 200% da própria altura */
+.intro__curtain {
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 50.4%;
+  background-image: var(--intro-bg);
+  background-size: 100% 200%;
+  will-change: transform;
+}
+
+.intro__curtain--top {
+  top: 0;
+  background-position: center top;
+  animation: introCurtainUp 0.55s cubic-bezier(0.76, 0, 0.24, 1) 1.95s forwards;
+}
+
+.intro__curtain--bottom {
+  bottom: 0;
+  background-position: center bottom;
+  animation: introCurtainDown 0.55s cubic-bezier(0.76, 0, 0.24, 1) 1.95s forwards;
+}
+
+.intro__stage {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transform-style: preserve-3d;
+  animation: introStageOut 0.45s ease-in 1.8s forwards;
+}
+
+/* --- telhado em construção --------------------------------- */
+.intro__roof {
+  position: relative;
+  width: min(400px, 68vw);
+  aspect-ratio: 640 / 190;
+  transform-style: preserve-3d;
+}
+
+.intro__beam {
+  position: absolute;
+  top: 30%;
+  width: 52%;
+  height: 12%;
+  border-radius: 2px;
+  background: linear-gradient(
+    100deg,
+    #7e858f,
+    #f4f6f8 38%,
+    #cfd5dd 62%,
+    #878e98
+  );
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.6);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.intro__beam--left {
+  left: 0;
+  transform-origin: right center;
+  animation:
+    introBeamLeft 0.62s cubic-bezier(0.18, 0.85, 0.28, 1) 0.08s forwards,
+    introPartOut 0.2s ease 1.02s forwards;
+}
+
+.intro__beam--right {
+  right: 0;
+  transform-origin: left center;
+  animation:
+    introBeamRight 0.62s cubic-bezier(0.18, 0.85, 0.28, 1) 0.2s forwards,
+    introPartOut 0.2s ease 1.02s forwards;
+}
+
+/* os quatro quadrados que o símbolo tem sob o telhado */
+.intro__grid {
+  position: absolute;
+  bottom: 2%;
+  left: 50%;
+  display: grid;
+  width: 15%;
+  grid-template-columns: 1fr 1fr;
+  gap: 9%;
+  transform: translateX(-50%);
+}
+
+.intro__square {
+  aspect-ratio: 1;
+  border: 1.5px solid #e6eaef;
+  border-radius: 1.5px;
+  opacity: 0;
+  animation:
+    introSquare 0.38s cubic-bezier(0.18, 0.85, 0.28, 1) forwards,
+    introPartOut 0.2s ease 1.02s forwards;
+}
+
+.intro__square:nth-child(1) { animation-delay: 0.7s, 1.02s; }
+.intro__square:nth-child(2) { animation-delay: 0.77s, 1.02s; }
+.intro__square:nth-child(3) { animation-delay: 0.84s, 1.02s; }
+.intro__square:nth-child(4) { animation-delay: 0.91s, 1.02s; }
+
+/* --- símbolo real assumindo o lugar das placas -------------- */
+.intro__symbol {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  opacity: 0;
+  animation: introSymbolIn 0.34s cubic-bezier(0.2, 0.7, 0.2, 1) 1.02s forwards;
+}
+
+/* --- letreiro ---------------------------------------------- */
+.intro__wordmark {
+  margin-top: 18px;
+  font-family: var(--font-display);
+  font-size: clamp(20px, 4.6vw, 30px);
+  font-weight: 900;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: introWordmark 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 1.15s forwards;
+}
+
+.intro__tagline {
+  margin-top: 10px;
+  font-family: var(--font-display);
+  font-size: clamp(8.5px, 2vw, 10px);
+  font-weight: 700;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--color-faint);
+  opacity: 0;
+  animation: introTagline 0.5s ease 1.3s forwards;
+}
+
+/* brilho metálico atravessando o logo */
+.intro__sweep {
+  position: absolute;
+  inset: -12% -30%;
+  background: linear-gradient(
+    100deg,
+    transparent 38%,
+    rgba(255, 255, 255, 0.5) 50%,
+    transparent 62%
+  );
+  opacity: 0;
+  pointer-events: none;
+  animation: introSweep 0.65s ease-out 1.45s forwards;
+}
+
+/* --- keyframes ---------------------------------------------- */
+@keyframes introBeamLeft {
+  from {
+    opacity: 0;
+    transform: translate3d(-46vw, 26px, -420px) rotateY(-72deg) rotate(-15deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotateY(0deg) rotate(-15deg);
+  }
+}
+
+@keyframes introBeamRight {
+  from {
+    opacity: 0;
+    transform: translate3d(46vw, 26px, -420px) rotateY(72deg) rotate(15deg);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0) rotateY(0deg) rotate(15deg);
+  }
+}
+
+@keyframes introSquare {
+  from {
+    opacity: 0;
+    transform: translateY(14px) rotateX(75deg) scale(0.5);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0deg) scale(1);
+  }
+}
+
+@keyframes introPartOut {
+  to { opacity: 0; }
+}
+
+@keyframes introSymbolIn {
+  from { opacity: 0; transform: scale(1.06); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes introWordmark {
+  from { opacity: 0; letter-spacing: 0.62em; transform: translateY(16px); }
+  to { opacity: 1; letter-spacing: 0.22em; transform: translateY(0); }
+}
+
+@keyframes introTagline {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes introSweep {
+  from { opacity: 0; transform: translateX(-55%); }
+  35%  { opacity: 1; }
+  to   { opacity: 0; transform: translateX(55%); }
+}
+
+@keyframes introStageOut {
+  to { opacity: 0; transform: scale(1.1) translateZ(80px); }
+}
+
+@keyframes introCurtainUp {
+  to { transform: translateY(-100%); }
+}
+
+@keyframes introCurtainDown {
+  to { transform: translateY(100%); }
+}
+
+@keyframes introSelfDismiss {
+  to { opacity: 0; visibility: hidden; pointer-events: none; }
+}
+
+/* saída imediata quando o visitante pula a animação */
+.intro--closing {
+  animation: introSkipOut 0.35s ease forwards;
+}
+
+@keyframes introSkipOut {
+  to { opacity: 0; transform: scale(1.04); visibility: hidden; }
+}
+
+/* Quem pediu menos movimento vê só um fade curto do logo. */
+@media (prefers-reduced-motion: reduce) {
+  .intro {
+    animation: introSelfDismiss 0s linear 0.6s forwards;
+  }
+  .intro__beam,
+  .intro__square,
+  .intro__sweep {
+    display: none;
+  }
+  .intro__stage {
+    animation: none;
+  }
+  .intro__symbol,
+  .intro__wordmark,
+  .intro__tagline {
+    opacity: 1;
+    animation: none;
+    letter-spacing: 0.22em;
+    transform: none;
+  }
+  .intro__curtain--top,
+  .intro__curtain--bottom {
+    animation: introPartOut 0.3s ease 0.3s forwards;
+  }
+}

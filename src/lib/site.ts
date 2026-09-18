@@ -40,16 +40,16 @@ export const site = {
 
 /** Crédito do desenvolvedor (rodapé). */
 export const developer = {
-  name: "Miguel da Silva Bahia",
-  email: "miguelbahia0602@gmail.com",
-  url: "https://miguel-silva-tech.vercel.app/",
+  name: "D20 Software House",
+  email: "d20softwarehouse@gmail.com",
+  url: "https://d20-software-house.vercel.app/",
   /**
    * Aviso de propriedade intelectual exibido no rodapé. Cobre o que foi
    * criado pelo desenvolvedor (código, layout e design); a marca, as fotos
    * e os textos continuam sendo da Foco Arte.
    */
   rights:
-    "Todos os direitos intelectuais sobre o código, o layout e o design deste site pertencem a Miguel da Silva Bahia.",
+    "Todos os direitos intelectuais sobre o código, o layout e o design deste site pertencem a D20 Software House e seus fundadores",
 } as const;
 
 export type WhatsAppContact = {
